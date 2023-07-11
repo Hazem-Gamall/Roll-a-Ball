@@ -10,11 +10,13 @@ public class PlayerController : MonoBehaviour
     private float speed = 200f;
     private float jumpForce = 7f;
     [SerializeField] private bool isGrounded;
+    [SerializeField] private AudioSource jump;
     
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        jump = GetComponent<AudioSource>();
     }
 
     
@@ -40,11 +42,12 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse );
             isGrounded = false;
+            jump.Play();
         }
     }
 
     private void OnCollisionEnter(Collision other) {
-        // Debug.Log("other" + other.gameObject.name);
+        Debug.Log("other" + other.gameObject.name);
         if(other.gameObject.tag == "Step" || other.gameObject.name == "Ground")
         {
             isGrounded = true;

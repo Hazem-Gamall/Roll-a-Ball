@@ -6,9 +6,9 @@ public class FollowPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
     private Transform playerTransform;
-    [SerializeField] private float distanceFromPlayer = 5f;
-    [SerializeField] private float yDistance = 4.5f;
-    [SerializeField] private float xAngle = 35f;
+    private float distanceFromPlayer = 8f;
+    private float yDistance = 6f;
+    private float xAngle = 45f;
     private Vector2 turn;
     void Start()
     {
