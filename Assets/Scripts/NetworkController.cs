@@ -48,8 +48,8 @@ public class NetworkController : MonoBehaviour
     {
         // Read data from the network stream
         NetworkStream nwStream = client.GetStream();
-        byte[] buffer = new byte[client.ReceiveBufferSize];
-        int bytesRead = nwStream.Read(buffer, 0, client.ReceiveBufferSize);
+        byte[] buffer = new byte[1];
+        int bytesRead = nwStream.Read(buffer, 0, 1);
 
         // Decode the bytes into a string
         string dataReceived = Encoding.UTF8.GetString(buffer, 0, bytesRead);
@@ -93,15 +93,7 @@ public class NetworkController : MonoBehaviour
         }
     }
 
-    // Position is the data being received in this example
-    Vector3 position = Vector3.zero;
-
-    void Update()
-    {
-        // Set this object's position in the scene according to the position received
-        transform.position = position;
-    }
-
+    
     private void OnDestroy()
     {
         server.Stop();
